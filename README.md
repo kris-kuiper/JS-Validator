@@ -2,15 +2,15 @@
 JS Validator is a Javascript form validator that lets you easily validate multiple input fields. JS Validator comes with an arsenal of built-in validator rules but you may also build your own (extending). You can combine multiple fields for validation and set you own custom error messages. Don't forget to validate server side as well. 
 
 We will handle:
--- Creating a new validator instance
--- Execute the validation and retrieve the error messages
--- The special required rule
--- All other rules (34 rules)
--- Date formatting
--- Combining fields
--- Events
--- Custom messages
--- Custom validator functions
+- Creating a new validator instance
+- Execute the validation and retrieve the error messages
+- The special required rule
+- All other rules (34 rules)
+- Date formatting
+- Combining fields
+- Events
+- Custom messages
+- Custom validator functions
 
 ## Create a new instance of the validator:
 Creating an instance of the validator is as simple as this:
