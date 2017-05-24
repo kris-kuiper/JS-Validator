@@ -291,18 +291,18 @@ validator.field('fieldname').words(10);
 ## Date formating
 JS Validator has multiple date validation rules that require a date format parameter. The following characters are recognized in the format parameter string:
 ```
-Y:  A full numeric representation of a year, 4 digits           A full numeric representation of a year, 4 digits
-y:  A two digit representation of a year                        A two digit representation of a year
-n:  Numeric representation of a month, without leading zeros    1 through 12
-m:  Numeric representation of a month, with leading zeros       01 through 12
-d:  Day of the month, 2 digits with leading zeros               01 to 31
-j:  Day of the month without leading zeros                  	1 to 31
-g:  12-hour format of an hour without leading zeros             1 through 12
-G:  24-hour format of an hour without leading zeros             0 through 23
-h:  12-hour format of an hour with leading zeros                01 through 12
-H:  24-hour format of an hour with leading zeros                00 through 23
-i:  Minutes with leading zeros                                  00 to 59
-s:  Seconds, with leading zeros                                 00 through 59
+Y:  	A full numeric representation of a year, 4 digits           	Examples: 1999 or 2003
+y:  	A two digit representation of a year                        	Examples: 99 or 03
+n:  	Numeric representation of a month, without leading zeros    	1 through 12
+m:  	Numeric representation of a month, with leading zeros       	01 through 12
+d:  	Day of the month, 2 digits with leading zeros               	01 to 31
+j:  	Day of the month without leading zeros                  		1 to 31
+g:  	12-hour format of an hour without leading zeros             	1 through 12
+G:  	24-hour format of an hour without leading zeros             	0 through 23
+h:  	12-hour format of an hour with leading zeros                	01 through 12
+H:  	24-hour format of an hour with leading zeros                	00 through 23
+i:  	Minutes with leading zeros                                  	00 to 59
+s:  	Seconds, with leading zeros                                 	00 through 59
 ```
 
 
