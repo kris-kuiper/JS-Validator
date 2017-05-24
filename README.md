@@ -3,10 +3,10 @@ JS Validator is a Javascript form validator that lets you easily validate multip
 
 We will handle:
 -- Creating a new validator instance
--- Execute the validation and retreive the error messages
+-- Execute the validation and retrieve the error messages
 -- The special required rule
 -- All other rules (34 rules)
--- Date formating
+-- Date formatting
 -- Combining fields
 -- Events
 -- Custom messages
@@ -20,7 +20,7 @@ var validator = new Validator([string prefix, object node]);
 The constructor accepts two optional arguments; prefix and node. 
 
 ##### Prefix parameter
-The first argument is the prefix and will handle all the fieldnames that are build as an array like:
+The first argument is the prefix and will handle all the field names that are build as an array like:
 ```
 <input name="contact[email]">
 <input name="contact[address][street]">
@@ -66,8 +66,8 @@ You may also apply multiple rules by chaining them.
 validator = new Validator();
 validator.field('fieldname').min(0).max(6).lengthmax(1);
 ```
-##### Retreive error messages
-You can use the "getMessages" method to return an Object with errors. This method accepts one parameter as a boolean to retreive the fullnames or shortnames of the error fields. This only works when you set the prefix in the validator instance . Default is false (short names).
+##### Retrieve error messages
+You can use the "getMessages" method to return an Object with errors. This method accepts one parameter as a boolean to retrieve the full names or short names of the error fields. This only works when you set the prefix in the validator instance . Default is false (short names).
 ```
 <input name="contact[surname]" value="A">
 
@@ -83,8 +83,8 @@ console.log(validator.getMessages(true));
 //Output: [contact[surname]: "Minimum 2 characters"]
 </script>
 ```
-##### Retreive single error messages
-You may also retreive a single error message:
+##### Retrieve single error messages
+You may also retrieve a single error message:
 ```
 <input name="contact[surname]" value="A">
 
@@ -151,7 +151,7 @@ Check whenever a value contains a specified string.
 validator.field('fieldname').contains('abc');
 ```
 ##### Different
-Check whenever a value is not the same as a value of another fieldname. See the "notequal" rule if you want to compare a given value.
+Check whenever a value is not the same as a value of another field name. See the "notequal" rule if you want to compare a given value.
 ```
 validator.field('fieldname-one').different('fieldname-two');
 ```
@@ -288,7 +288,7 @@ validator.field('fieldname').words(10);
 ```
 
 
-## Date formating
+## Date formatting
 JS Validator has multiple date validation rules that require a date format parameter. The following characters are recognized in the format parameter string:
 ```
 Y:  	A full numeric representation of a year, 4 digits           	Examples: 1999 or 2003
@@ -322,7 +322,7 @@ validator.field('date').isdate('Y-m-d');
 validator.exec();
 </script>
 ```
-You create a new fieldname called "date" and execute the validation
+You create a new field name called "date" and execute the validation
 ##### Combining with the format method
 You can also combine multiple fields with the format method for more control:
 ```
@@ -333,7 +333,7 @@ validator.field('date').isdate('Y-m/d');
 validator.exec();
 </script>
 ```
-Each "%s" is replaced with the specified input fieldname order.
+Each "%s" is replaced with the specified input field name order.
 
 
 ## Events
@@ -403,9 +403,9 @@ validator.setMessage('amount').equals('Only 1000 as value is accepted');
 ## Custom validator functions
 JS Validator has a lot of build in validation rules. But if you want for example check an e-mail address server side with an ajax request, you have to build your own validation rule. You may use the "extend" method to build a custom validation rule.
 
-The extend fucntion accepts a minimal of three paramaters. The first parameter will be the name of you validation rule. The second parameter is a callable function and the third paramater is the error message when the validation fails.
+The extend function accepts a minimal of three parameters. The first parameter will be the name of you validation rule. The second parameter is a callable function and the third parameter is the error message when the validation fails.
 
-The callable function (second parameter) will be injected with four parameters. The fieldname, the value of the input and a callable fail and success function.
+The callable function (second parameter) will be injected with four parameters. The field name, the value of the input and a callable fail and success function.
 ```
 validator = new Validator();
 validator.extend('age', function(field, value, fail, success) {
