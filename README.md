@@ -1,5 +1,5 @@
 # JS Validator
-JS Validator is a Javascript form validator that lets you easily validate multiple input fields. JS Validator comes with an arsenal of build in validator rules but you may also build your own (extending). You can combine multiple fields for validation and set you own custom error messages. Don't forget to validate server side as well. 
+JS Validator is a Javascript form validator that lets you easily validate multiple input fields. JS Validator comes with an arsenal of built-in validator rules but you may also build your own (extending). You can combine multiple fields for validation and set you own custom error messages. Don't forget to validate server side as well. 
 
 We will handle:
 -- Creating a new validator instance
@@ -20,7 +20,7 @@ var validator = new Validator([string prefix, object node]);
 The constructor accepts two optional arguments; prefix and node. 
 
 ##### Prefix parameter
-The first argument is the prefix and will handle all the field names that are build as an array like:
+The first argument is the prefix and will handle all the field names that are built as an array like:
 ```
 <input name="contact[email]">
 <input name="contact[address][street]">
@@ -41,7 +41,7 @@ validator.field('email')
 Now the validator will only validate the email field in the given form node.
 
 ## Execute validation
-JS Validator comes with a arsenal of build in validation rules. To apply a rule you can do the following:
+JS Validator comes with a arsenal of built-in validation rules. To apply a rule you can do the following:
 ```
 var validator = new Validator();
 
@@ -401,7 +401,7 @@ validator.setMessage('amount').equals('Only 1000 as value is accepted');
 
 
 ## Custom validator functions
-JS Validator has a lot of build in validation rules. But if you want for example check an e-mail address server side with an ajax request, you have to build your own validation rule. You may use the "extend" method to build a custom validation rule.
+JS Validator has a lot of built-in validation rules. But if you want for example check an e-mail address server side with an ajax request, you have to build your own validation rule. You may use the "extend" method to build a custom validation rule.
 
 The extend function accepts a minimal of three parameters. The first parameter will be the name of you validation rule. The second parameter is a callable function and the third parameter is the error message when the validation fails.
 
