@@ -1,0 +1,57 @@
+<html>
+	<head>
+		<script src="../src/validator-1.0.0-min.js"></script>
+	</head>
+	<body>
+
+		<input type="text" name="contact[name]" value="Kris">
+		<input type="text" name="contact[email]" value="email@example.com">
+		<select name="contact[subject]">
+			<option value="1">Invoices</option>
+			<option value="2" selected="selected">Technical support</option>
+			<option value="3">Other</option>
+		</select>
+		<textarea name="contact[message]">Hello, i don't need technical support. Kind regards.</textarea>
+		<input type="submit">
+
+		<div class="result"></div>
+
+		<script>
+		document.querySelector('input[type="submit"]').onclick = function() {
+
+			//Create new instance of the validator
+			validator = new Validator('contact');
+
+			//Add the validation rules
+			validator.field('name').present().lengthmax(50).lengthmin(2);
+			validator.field('email').present().lengthmax(75).email();
+			validator.field('message').present().lengthmax(3000).lengthmin(10);
+			validator.field('subject').present().in(['1', '2', '3']);
+
+			//Listen to passes event
+			validator.on('passes', function() {
+				document.querySelector('.result').innerHTML = 'Passes';
+			});
+
+			//Listen to fails event
+			validator.on('fails', function() {
+				
+				var result = document.querySelector('.result');
+				var errors = validator.getMessages(true);
+
+				result.innerHTML = '<ul>';
+
+				for(var i in errors) {
+					result.innerHTML += '<li>' + i + ': ' + errors[i] + '</li>';
+				}
+
+				result.innerHTML += '</ul>';
+			});
+
+			//Execute validator
+			validator.exec();
+		}
+		</script>
+
+	</body>
+</html>

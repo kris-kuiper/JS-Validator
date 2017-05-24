@@ -1,0 +1,49 @@
+<html>
+	<head>
+		<script src="../../src/validator-1.0.0-min.js"></script>
+	</head>
+	<body>
+
+		<input type="text" name="ipv61" value="3ffe:1900:4545:3:200:f8ff:fe21:67cf">
+		<input type="text" name="ipv62" value="10.0.0.1">
+		<input type="submit">
+
+		<div class="result"></div>
+
+		<script>
+		document.querySelector('input[type="submit"]').onclick = function() {
+
+			//Create new instance of the validator
+			validator = new Validator();
+
+			//Add the validation rules
+			validator.field('ipv61').ipv6();
+			validator.field('ipv62').ipv6();
+
+			//Listen to passes event
+			validator.on('passes', function() {
+				document.querySelector('.result').innerHTML = 'Passes';
+			});
+
+			//Listen to fails event
+			validator.on('fails', function() {
+				
+				var result = document.querySelector('.result');
+				var errors = validator.getMessages(true);
+
+				result.innerHTML = '<ul>';
+
+				for(var i in errors) {
+					result.innerHTML += '<li>' + i + ': ' + errors[i] + '</li>';
+				}
+
+				result.innerHTML += '</ul>';
+			});
+
+			//Execute validator
+			validator.exec();
+		}
+		</script>
+
+	</body>
+</html>

@@ -1,0 +1,67 @@
+<html>
+	<head>
+		<script src="../src/validator-1.0.0-min.js"></script>
+	</head>
+	<body>
+
+		<input type="text" name="year" value="2020">
+		<input type="text" name="month" value="01">
+		<input type="text" name="day" value="01">
+		<input type="text" name="hour" value="12">
+		<input type="text" name="minute" value="30">
+		<input type="submit">
+
+		<div class="result"></div>
+
+		<script>
+		document.querySelector('input[type="submit"]').onclick = function() {
+
+			//Create new instance of the validator
+			validator = new Validator();
+
+
+
+
+			//Combine fields to date format with the "glue" method and name it "date"
+			validator.combine('year', 'month', 'day').glue('-').name('date');
+
+			//Combine field to datetime format with the "format" method and name it "datetime"
+			validator.combine('year', 'month', 'day', 'hour', 'minute').format('%s-%s-%s %s:%s').name('datetime');
+
+
+			//Check if the combine "date" name is a valid date with format "Y-m-d"
+			validator.field('date').isdate('Y-m-d');
+
+			//Check if the combine "datetime" name is a valid date and time with format "Y-m-d H:m"
+			validator.field('datetime').isdate('Y-m-d H:i');
+
+
+
+
+			//Listen to passes event
+			validator.on('passes', function() {
+				document.querySelector('.result').innerHTML = 'Passes';
+			});
+
+			//Listen to fails event
+			validator.on('fails', function() {
+				
+				var result = document.querySelector('.result');
+				var errors = validator.getMessages(true);
+
+				result.innerHTML = '<ul>';
+
+				for(var i in errors) {
+					result.innerHTML += '<li>' + i + ': ' + errors[i] + '</li>';
+				}
+
+				result.innerHTML += '</ul>';
+			});
+
+			//Execute validator
+			validator.exec();
+		}
+		</script>
+
+	</body>
+</html>

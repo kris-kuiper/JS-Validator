@@ -1,0 +1,67 @@
+<html>
+	<head>
+		<script src="../src/validator-1.0.0-min.js"></script>
+	</head>
+	<body>
+
+		<fieldset>
+			<legend>Only this form will be validated</legend>
+			<form id="form1">
+				<input type="text" name="samename" value="Input from form 1">
+				<input type="submit">
+			</form>
+		</fieldset>
+
+		<fieldset>
+			<legend>This form will not be validated</legend>
+			<form id="form2">
+				<input type="text" name="samename" value="Input from form 2">
+			</form>
+		</fieldset>
+
+		<div class="result"></div>
+
+		<script>
+		document.querySelector('input[type="submit"]').onclick = function(event) {
+
+			
+
+
+			//Create new instance of the validator and select the form to validate
+			validator = new Validator(null, document.querySelector('#form1'));
+
+			
+
+
+			//Add the validation rules
+			validator.field('samename').lengthmin(5);
+
+			//Listen to passes event
+			validator.on('passes', function() {
+				document.querySelector('.result').innerHTML = 'Passes';
+			});
+
+			//Listen to fails event
+			validator.on('fails', function() {
+				
+				var result = document.querySelector('.result');
+				var errors = validator.getMessages(true);
+
+				result.innerHTML = '<ul>';
+
+				for(var i in errors) {
+					result.innerHTML += '<li>' + i + ': ' + errors[i] + '</li>';
+				}
+
+				result.innerHTML += '</ul>';
+			});
+
+			//Execute validator
+			validator.exec();
+
+			event.preventDefault();
+		}
+		</script>
+
+	</body>
+</html>

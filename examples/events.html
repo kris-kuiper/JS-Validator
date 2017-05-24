@@ -1,0 +1,53 @@
+<html>
+	<head>
+		<script src="../src/validator-1.0.0-min.js"></script>
+	</head>
+	<body>
+
+		<input type="text" name="amount" value="1000">
+		<input type="submit">
+
+		<div class="result"></div>
+
+		<script>
+		document.querySelector('input[type="submit"]').onclick = function() {
+
+			//Create new instance of the validator
+			validator = new Validator();
+
+			//Add the validation rules
+			validator.field('amount').equals('1000');
+
+
+
+
+			//Start event
+			validator.on('start', function() {
+				alert('Starting validation!');
+			});
+
+			//End event
+			validator.on('end', function() {
+				alert('Validation has ended!');
+			});
+
+			//Listen to passes event
+			validator.on('passes', function() {
+				alert('Validation passes!');
+			});
+
+			//Listen to fails event
+			validator.on('fails', function() {
+				alert('Validation fails!');
+			});
+
+
+
+
+			//Execute validator
+			validator.exec();
+		}
+		</script>
+
+	</body>
+</html>
