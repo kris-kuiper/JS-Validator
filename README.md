@@ -296,7 +296,7 @@ y:  	A two digit representation of a year                        	Examples: 99 o
 n:  	Numeric representation of a month, without leading zeros    	1 through 12
 m:  	Numeric representation of a month, with leading zeros       	01 through 12
 d:  	Day of the month, 2 digits with leading zeros               	01 to 31
-j:  	Day of the month without leading zeros                  		1 to 31
+j:  	Day of the month without leading zeros                  	1 to 31
 g:  	12-hour format of an hour without leading zeros             	1 through 12
 G:  	24-hour format of an hour without leading zeros             	0 through 23
 h:  	12-hour format of an hour with leading zeros                	01 through 12
