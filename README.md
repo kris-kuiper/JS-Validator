@@ -28,15 +28,15 @@ The first argument is the prefix and will handle all the field names that are bu
 Just add the "contact" as prefix and you can point to the input without writing the full name:
 ```
 var validator = new Validator('contact');
-validator.field('email')
-validator.field('address[street]')
+validator.field('email');
+validator.field('address[street]');
 ```
 
 ##### Node parameter
 If you have multiple forms with the same input names, you may select the form to validate by giving the node as second parameter:
 ```
 var validator = new Validator(null, document.querySelector('#form'));
-validator.field('email')
+validator.field('email');
 ```
 Now the validator will only validate the email field in the given form node.
 
@@ -46,7 +46,7 @@ JS Validator comes with a arsenal of built-in validation rules. To apply a rule 
 var validator = new Validator();
 
 //In this example we will use the accepted rule
-validator.field('fieldname').accepted()
+validator.field('fieldname').accepted();
 
 //On fails event
 validator.on('fails', function() {
@@ -159,11 +159,6 @@ validator.field('fieldname-one').different('fieldname-two');
 Check whenever a value is a valid email address. 
 ```
 validator.field('fieldname').email();
-```
-##### Equals
-Check whenever a value is equal to a given string. 
-```
-validator.field('fieldname').equals('abc');
 ```
 ##### Equals
 Check whenever a value is equal to a given string. A second parameter can be given if you want to check in strict mode. Strict mode lets you compare not only the value but also the type of the value. Default is false.
@@ -291,18 +286,18 @@ validator.field('fieldname').words(10);
 ## Date formatting
 JS Validator has multiple date validation rules that require a date format parameter. The following characters are recognized in the format parameter string:
 ```
-Y:  	A full numeric representation of a year, 4 digits           	Examples: 1999 or 2003
-y:  	A two digit representation of a year                        	Examples: 99 or 03
-n:  	Numeric representation of a month, without leading zeros    	1 through 12
-m:  	Numeric representation of a month, with leading zeros       	01 through 12
-d:  	Day of the month, 2 digits with leading zeros               	01 to 31
-j:  	Day of the month without leading zeros                  	1 to 31
-g:  	12-hour format of an hour without leading zeros             	1 through 12
-G:  	24-hour format of an hour without leading zeros             	0 through 23
-h:  	12-hour format of an hour with leading zeros                	01 through 12
-H:  	24-hour format of an hour with leading zeros                	00 through 23
-i:  	Minutes with leading zeros                                  	00 to 59
-s:  	Seconds, with leading zeros                                 	00 through 59
+Y  	A full numeric representation of a year, 4 digits           	Examples: 1999 or 2003
+y  	A two digit representation of a year                        	Examples: 99 or 03
+n  	Numeric representation of a month, without leading zeros    	1 through 12
+m  	Numeric representation of a month, with leading zeros       	01 through 12
+d  	Day of the month, 2 digits with leading zeros               	01 to 31
+j  	Day of the month without leading zeros                  	1 to 31
+g  	12-hour format of an hour without leading zeros             	1 through 12
+G  	24-hour format of an hour without leading zeros             	0 through 23
+h  	12-hour format of an hour with leading zeros                	01 through 12
+H  	24-hour format of an hour with leading zeros                	00 through 23
+i  	Minutes with leading zeros                                  	00 to 59
+s  	Seconds, with leading zeros                                 	00 through 59
 ```
 
 
@@ -345,7 +340,7 @@ validator = new Validator();
 validator.field('date').isdate('Y-m-d');
 validator.on('passes', function() {
     //Success
-}
+});
 validator.exec();
 ```
 ##### Fails event
@@ -356,7 +351,7 @@ validator.field('date').isdate('Y-m-d');
 validator.on('passes', function() {
     //Fails
     console.log(validator.getMessages());
-}
+});
 validator.exec();
 ```
 ##### Start event
@@ -366,7 +361,7 @@ validator = new Validator();
 validator.field('date').isdate('Y-m-d');
 validator.on('start', function() {
     //validation has started
-}
+});
 validator.exec();
 ```
 ##### End event
@@ -376,7 +371,7 @@ validator = new Validator();
 validator.field('date').isdate('Y-m-d');
 validator.on('end', function() {
     //validation has ended
-}
+});
 validator.exec();
 ```
 
