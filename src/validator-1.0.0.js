@@ -890,13 +890,13 @@ function Validator(prefix, form) {
 
 			if(null !== matches) {
 
-				var date = {year : null, month : null, day : null, hours : null, minutes : null, seconds : null};
+				var date = {year : null, month : null, day : null, hour : null, minute : null, second : null};
 
 				for(var a in types) {
 					date[types[a]] = matches[1 + parseInt(a)];
 				}
 
-				var t = new Date(date.year, date.month - 1, date.day, date.hours, date.minutes, date.seconds, 0);
+				var t = new Date(date.year, date.month - 1, date.day, date.hour, date.minute, date.second, 0);
 
 				if(t.getDate() === parseInt(date.day)) {
 					return t;
